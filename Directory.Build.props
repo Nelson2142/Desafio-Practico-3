@@ -1,0 +1,13 @@
+<Project>
+  <!--
+    Configuración común para todos los proyectos de la solución.
+    Si tu equipo solo tiene .NET 10, cambia net8.0 por net10.0 aquí
+    y actualiza las versiones en Directory.Packages.props (ver README).
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Capa de Entidades (dominio).
+    Contiene los modelos con sus Data Annotations y los contratos (interfaces)
+    de acceso a datos. No depende de ninguna otra capa ni de Entity Framework.
+  -->
+  <PropertyGroup>
+    <RootNamespace>Desafio03.Entidades</RootNamespace>
+  </PropertyGroup>
+
+</Project>

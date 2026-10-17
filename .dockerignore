@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/TestResults/
+.git/
+.gitignore
+docker-compose*.yml
+Dockerfile
+README.md
+capturas/

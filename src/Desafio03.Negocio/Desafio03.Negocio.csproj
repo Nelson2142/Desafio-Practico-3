@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Capa de Negocio.
+    Contiene los servicios, las reglas de negocio, los DTOs y las validaciones.
+    Solo depende de la capa de Entidades (trabaja contra interfaces),
+    por eso puede probarse sin base de datos.
+  -->
+  <PropertyGroup>
+    <RootNamespace>Desafio03.Negocio</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Desafio03.Entidades\Desafio03.Entidades.csproj" />
+  </ItemGroup>
+
+</Project>

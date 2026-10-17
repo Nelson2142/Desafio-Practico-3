@@ -1,0 +1,149 @@
+### =============================================================================
+### Peticiones de prueba de la API (Visual Studio, Rider o la extensión
+### "REST Client" de VS Code). También se puede usar Swagger:
+### http://localhost:8080/swagger
+### =============================================================================
+
+@api = http://localhost:8080
+
+### Salud de la API
+GET {{api}}/health
+
+### ------------------------------- CLIENTES -------------------------------------
+
+### Listar clientes
+GET {{api}}/api/clientes
+
+### Crear cliente (201 Created)
+POST {{api}}/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Nelson Steven",
+  "apellido": "Rivas Tobar",
+  "email": "nelson.rivas@correo.com"
+}
+
+### Crear cliente con datos incorrectos (400 Bad Request)
+POST {{api}}/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "apellido": "R2D2",
+  "email": "correo-invalido"
+}
+
+### Crear cliente con email repetido (409 Conflict)
+POST {{api}}/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "apellido": "Repetida",
+  "email": "ana.martinez@correo.com"
+}
+
+### Obtener cliente por Id
+GET {{api}}/api/clientes/1
+
+### Cliente inexistente (404 Not Found)
+GET {{api}}/api/clientes/999
+
+### Pedidos de un cliente
+GET {{api}}/api/clientes/1/pedidos
+
+### Actualizar cliente
+PUT {{api}}/api/clientes/3
+Content-Type: application/json
+
+{
+  "nombre": "Sofía",
+  "apellido": "López Ramírez",
+  "email": "sofia.lopez@correo.com"
+}
+
+### Eliminar cliente con pedidos (409 Conflict)
+DELETE {{api}}/api/clientes/1
+
+### ------------------------------- PRODUCTOS ------------------------------------
+
+### Listar productos
+GET {{api}}/api/productos
+
+### Crear producto (201 Created)
+POST {{api}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Audífonos Bluetooth",
+  "descripcion": "Audífonos inalámbricos con cancelación de ruido",
+  "precio": 45.99,
+  "stock": 25
+}
+
+### Crear producto con precio y stock inválidos (400 Bad Request)
+POST {{api}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Producto inválido",
+  "descripcion": "Precio negativo y stock negativo",
+  "precio": -10,
+  "stock": -5
+}
+
+### Actualizar producto
+PUT {{api}}/api/productos/4
+Content-Type: application/json
+
+{
+  "nombre": "Monitor 24 pulgadas",
+  "descripcion": "Monitor Full HD IPS de 24 pulgadas, 75 Hz",
+  "precio": 129.99,
+  "stock": 12
+}
+
+### -------------------------------- PEDIDOS -------------------------------------
+
+### Listar pedidos
+GET {{api}}/api/pedidos
+
+### Crear pedido (201 Created, descuenta stock)
+POST {{api}}/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteId": 3,
+  "productoId": 3,
+  "cantidad": 2
+}
+
+### Pedido con stock insuficiente (409 Conflict)
+POST {{api}}/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "productoId": 4,
+  "cantidad": 500
+}
+
+### Consultar pedido existente
+GET {{api}}/api/pedidos/1
+
+### Pedido inexistente (404 Not Found)
+GET {{api}}/api/pedidos/999
+
+### Modificar cantidad de un pedido (ajusta el stock)
+PUT {{api}}/api/pedidos/1
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "productoId": 1,
+  "cantidad": 2
+}
+
+### Cancelar pedido (devuelve el stock)
+DELETE {{api}}/api/pedidos/2

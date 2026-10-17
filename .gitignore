@@ -1,0 +1,22 @@
+# Compilación
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.user
+*.suo
+*.rsuser
+
+# Pruebas
+TestResults/
+coverage*.xml
+*.trx
+
+# Sistema
+.DS_Store
+Thumbs.db
